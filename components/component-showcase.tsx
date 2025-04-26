@@ -19,6 +19,7 @@ import { AnimatedSwitch } from "@/components/ui/animated-switch"
 import { AnimatedSlider } from "@/components/ui/animated-slider"
 import { AnimatedBadge } from "@/components/ui/animated-badge"
 import { AnimatedProgress } from "@/components/ui/animated-progress"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 export function ComponentShowcase() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -140,6 +141,21 @@ export function ComponentShowcase() {
                   content: "Content for accordion item 3",
                 },
               ]}
+            />
+          </CardContent>
+        </Card>
+
+        <Card className="component-card">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-medium mb-4">Breadcrumbs</h3>
+            <Breadcrumbs
+              items={[
+                { label: "Dashboard", href: "/dashboard" },
+                { label: "Projects", href: "/dashboard/projects" },
+                { label: "Project Details" },
+              ]}
+              animated={true}
+              showHomeIcon={true}
             />
           </CardContent>
         </Card>

@@ -33,7 +33,7 @@ export default function Home() {
                   Storybook
                 </Button>
               </Link>
-              <Link href="https://github.com/yourusername/maksudi-lib" target="_blank" rel="noreferrer">
+              <Link href="https://github.com/b33lz3bubTH/maksudi-lib" target="_blank" rel="noreferrer">
                 <Button variant="ghost" size="sm">
                   <Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
@@ -202,7 +202,7 @@ export default function Home() {
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Built with ❤️ by Maksudi. The source code is available on{" "}
             <a
-              href="https://github.com/yourusername/maksudi-lib"
+              href="https://github.com/b33lz3bubTH/maksudi-lib"
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

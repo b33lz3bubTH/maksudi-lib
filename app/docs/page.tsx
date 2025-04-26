@@ -1,13 +1,25 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Package } from "lucide-react"
+import { ArrowLeft, Package, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AnimatedCard } from "@/components/ui/animated-card"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 
 export default function DocsPage() {
+  const [expandedSection, setExpandedSection] = useState<string | null>(null)
+
+  const toggleSection = (section: string) => {
+    if (expandedSection === section) {
+      setExpandedSection(null)
+    } else {
+      setExpandedSection(section)
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -40,6 +52,7 @@ export default function DocsPage() {
               <TabsTrigger value="components">Components</TabsTrigger>
               <TabsTrigger value="animations">Animations</TabsTrigger>
               <TabsTrigger value="templates">Templates</TabsTrigger>
+              <TabsTrigger value="api">API Reference</TabsTrigger>
             </TabsList>
 
             <TabsContent value="getting-started">
@@ -62,7 +75,7 @@ export default function DocsPage() {
                   <div className="border rounded-lg p-4 bg-muted/50">
                     <h3 className="font-medium mb-2">Basic Usage</h3>
                     <pre className="bg-muted p-4 rounded-md overflow-x-auto">
-                      <code>{`import { AnimatedButton } from "maksudi-lib/components";
+                      <code>{`import { AnimatedButton } from "@/components/ui/animated-button";
 
 function App() {
   return (
@@ -97,6 +110,51 @@ function App() {
                       <strong>Accessibility</strong> - All animations respect user preferences for reduced motion.
                     </li>
                   </ul>
+
+                  <h3 className="text-xl font-medium mt-6">Project Structure</h3>
+                  <p>Maksudi-Lib is organized into several categories of components:</p>
+
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>
+                      <strong>Basic Components</strong> - Fundamental UI elements like buttons, cards, and badges.
+                    </li>
+                    <li>
+                      <strong>Navigation Components</strong> - Components for navigating through content, like tabs,
+                      drawers, and accordions.
+                    </li>
+                    <li>
+                      <strong>Form Controls</strong> - Input components like checkboxes, switches, and sliders.
+                    </li>
+                    <li>
+                      <strong>Data Display</strong> - Components for displaying data, like tables and carousels.
+                    </li>
+                    <li>
+                      <strong>Feedback Components</strong> - Components that provide feedback to users, like tooltips
+                      and modals.
+                    </li>
+                    <li>
+                      <strong>Animation Components</strong> - Utilities for adding animations, like scroll reveal
+                      effects.
+                    </li>
+                  </ul>
+
+                  <h3 className="text-xl font-medium mt-6">Enterprise Features</h3>
+                  <p>Maksudi-Lib includes several enterprise-grade features:</p>
+
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>
+                      <strong>Form Builder</strong> - A powerful form builder component for creating and managing forms.
+                    </li>
+                    <li>
+                      <strong>Multi-Step Forms</strong> - Components for creating multi-step forms with validation.
+                    </li>
+                    <li>
+                      <strong>Data Tables</strong> - Advanced data tables with sorting, filtering, and pagination.
+                    </li>
+                    <li>
+                      <strong>Admin Dashboard Templates</strong> - Ready-to-use templates for admin dashboards.
+                    </li>
+                  </ul>
                 </div>
               </AnimatedCard>
             </TabsContent>
@@ -110,66 +168,97 @@ function App() {
                     All components are built with accessibility and performance in mind.
                   </p>
 
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div className="border rounded-lg p-6">
-                      <h3 className="text-lg font-medium mb-2">Input Components</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Components for user input with animated feedback and transitions.
-                      </p>
-                      <ul className="space-y-1">
-                        <li>• AnimatedButton</li>
-                        <li>• AnimatedInput</li>
-                        <li>• AnimatedCheckbox</li>
-                        <li>• AnimatedRadio</li>
-                        <li>• AnimatedSelect</li>
-                        <li>• AnimatedSlider</li>
-                      </ul>
-                    </div>
-
-                    <div className="border rounded-lg p-6">
-                      <h3 className="text-lg font-medium mb-2">Layout Components</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Structural components with entrance and transition animations.
-                      </p>
-                      <ul className="space-y-1">
-                        <li>• AnimatedCard</li>
-                        <li>• AnimatedContainer</li>
-                        <li>• AnimatedGrid</li>
-                        <li>• AnimatedDivider</li>
-                        <li>• ScrollReveal</li>
-                        <li>• ParallaxSection</li>
-                      </ul>
-                    </div>
-
-                    <div className="border rounded-lg p-6">
-                      <h3 className="text-lg font-medium mb-2">Feedback Components</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Components that provide animated feedback to user actions.
-                      </p>
-                      <ul className="space-y-1">
-                        <li>• AnimatedToast</li>
-                        <li>• AnimatedAlert</li>
-                        <li>• AnimatedProgress</li>
-                        <li>• AnimatedSpinner</li>
-                        <li>• AnimatedTooltip</li>
-                        <li>• AnimatedBadge</li>
-                      </ul>
-                    </div>
-
-                    <div className="border rounded-lg p-6">
-                      <h3 className="text-lg font-medium mb-2">Navigation Components</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Components for navigating through content with smooth transitions.
-                      </p>
-                      <ul className="space-y-1">
-                        <li>• AnimatedTabs</li>
-                        <li>• AnimatedMenu</li>
-                        <li>• AnimatedDrawer</li>
-                        <li>• AnimatedNavbar</li>
-                        <li>• AnimatedBreadcrumbs</li>
-                        <li>• AnimatedPagination</li>
-                      </ul>
-                    </div>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        id: "basic",
+                        title: "Basic Components",
+                        description: "Fundamental UI elements with animations",
+                        components: [
+                          "AnimatedButton - Enhanced buttons with ripple effects and hover animations",
+                          "AnimatedCard - Cards with tilt and glare effects",
+                          "AnimatedBadge - Badges with pulse, bounce, or shake animations",
+                          "AnimatedProgress - Progress bars with smooth animations",
+                        ],
+                      },
+                      {
+                        id: "navigation",
+                        title: "Navigation Components",
+                        description: "Components for navigating through content",
+                        components: [
+                          "AnimatedTabs - Tabs with smooth transitions between content",
+                          "AnimatedDrawer - Sliding drawers that can appear from any edge",
+                          "AnimatedAccordion - Expandable accordion sections with smooth animations",
+                        ],
+                      },
+                      {
+                        id: "form",
+                        title: "Form Controls",
+                        description: "Input components with animated feedback",
+                        components: [
+                          "AnimatedCheckbox - Checkboxes with smooth check animations",
+                          "AnimatedSwitch - Toggle switches with sliding animations",
+                          "AnimatedSlider - Sliders with smooth dragging and value changes",
+                          "MultiStepForm - Forms broken into manageable steps with animations",
+                          "FormBuilder - Drag-and-drop form builder with live preview",
+                        ],
+                      },
+                      {
+                        id: "data",
+                        title: "Data Display",
+                        description: "Components for displaying data",
+                        components: [
+                          "DataTable - Advanced tables with sorting, filtering, and pagination",
+                          "AnimatedCarousel - Carousels with various transition animations",
+                        ],
+                      },
+                      {
+                        id: "feedback",
+                        title: "Feedback Components",
+                        description: "Components that provide feedback to users",
+                        components: [
+                          "AnimatedTooltip - Tooltips with entrance and exit animations",
+                          "AnimatedModal - Modals with various entrance and exit animations",
+                        ],
+                      },
+                      {
+                        id: "animation",
+                        title: "Animation Utilities",
+                        description: "Utilities for adding animations",
+                        components: ["ScrollReveal - Animate elements as they enter the viewport"],
+                      },
+                    ].map((category) => (
+                      <div key={category.id} className="border rounded-lg overflow-hidden">
+                        <button
+                          className="flex items-center justify-between w-full p-4 text-left font-medium bg-muted/50 hover:bg-muted/70"
+                          onClick={() => toggleSection(category.id)}
+                        >
+                          <span>{category.title}</span>
+                          <ChevronRight
+                            className={`h-5 w-5 transition-transform ${
+                              expandedSection === category.id ? "rotate-90" : ""
+                            }`}
+                          />
+                        </button>
+                        {expandedSection === category.id && (
+                          <div className="p-4">
+                            <p className="text-muted-foreground mb-4">{category.description}</p>
+                            <ul className="space-y-2 list-disc pl-6">
+                              {category.components.map((component, index) => (
+                                <li key={index}>{component}</li>
+                              ))}
+                            </ul>
+                            <div className="mt-4">
+                              <Link href="/storybook">
+                                <Button variant="outline" size="sm">
+                                  View in Storybook
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
 
                   <div className="mt-6">
@@ -304,6 +393,30 @@ function HoverCard() {
                       state.
                     </li>
                   </ul>
+
+                  <h3 className="text-xl font-medium mt-6">Animation Examples</h3>
+                  <div className="space-y-8 py-4">
+                    <ScrollReveal animation="fade" delay={0.1}>
+                      <div className="p-6 bg-primary/10 rounded-md">
+                        <h3 className="text-lg font-medium">Fade Animation</h3>
+                        <p>This element fades in when it enters the viewport.</p>
+                      </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal animation="slide" direction="up" delay={0.2}>
+                      <div className="p-6 bg-secondary/10 rounded-md">
+                        <h3 className="text-lg font-medium">Slide Up Animation</h3>
+                        <p>This element slides up when it enters the viewport.</p>
+                      </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal animation="scale" delay={0.3}>
+                      <div className="p-6 bg-muted rounded-md">
+                        <h3 className="text-lg font-medium">Scale Animation</h3>
+                        <p>This element scales in when it enters the viewport.</p>
+                      </div>
+                    </ScrollReveal>
+                  </div>
                 </div>
               </AnimatedCard>
             </TabsContent>
@@ -317,14 +430,21 @@ function HoverCard() {
                     scenarios. These templates are fully responsive and can be customized to fit your needs.
                   </p>
 
-                  <div className="space-y-4">
-                    <div className="border rounded-lg p-4">
-                      <h3 className="font-medium">Admin Dashboard</h3>
-                      <p className="text-sm text-muted-foreground">
-                        A comprehensive admin dashboard with analytics, user management, and more.
-                      </p>
-                      <div className="mt-2">
-                        <Link href="/templates/admin">
+                  <div className="grid gap-6 md:grid-cols-2 mt-6">
+                    <div className="border rounded-lg overflow-hidden">
+                      <div className="aspect-video bg-muted relative">
+                        <img
+                          src="/placeholder.svg?height=400&width=600"
+                          alt="Admin Dashboard Template"
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-medium text-lg">Admin Dashboard</h3>
+                        <p className="text-muted-foreground text-sm mt-1 mb-4">
+                          A comprehensive admin dashboard with analytics, user management, and more.
+                        </p>
+                        <Link href="/templates/admin-dashboard">
                           <Button variant="outline" size="sm">
                             View Template
                           </Button>
@@ -332,12 +452,40 @@ function HoverCard() {
                       </div>
                     </div>
 
-                    <div className="border rounded-lg p-4">
-                      <h3 className="font-medium">Authentication Pages</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Beautiful login and signup pages with social login options.
-                      </p>
-                      <div className="mt-2">
+                    <div className="border rounded-lg overflow-hidden">
+                      <div className="aspect-video bg-muted relative">
+                        <img
+                          src="/placeholder.svg?height=400&width=600"
+                          alt="Multi-Step Form Template"
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-medium text-lg">Multi-Step Form</h3>
+                        <p className="text-muted-foreground text-sm mt-1 mb-4">
+                          A multi-step form with validation and smooth transitions between steps.
+                        </p>
+                        <Link href="/templates/multi-step-form">
+                          <Button variant="outline" size="sm">
+                            View Template
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="border rounded-lg overflow-hidden">
+                      <div className="aspect-video bg-muted relative">
+                        <img
+                          src="/placeholder.svg?height=400&width=600"
+                          alt="Login Template"
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-medium text-lg">Authentication Pages</h3>
+                        <p className="text-muted-foreground text-sm mt-1 mb-4">
+                          Beautiful login and signup pages with social login options.
+                        </p>
                         <Link href="/templates/login">
                           <Button variant="outline" size="sm">
                             View Template
@@ -346,12 +494,19 @@ function HoverCard() {
                       </div>
                     </div>
 
-                    <div className="border rounded-lg p-4">
-                      <h3 className="font-medium">Portfolio Website</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Professional portfolio template with smooth animations and project showcases.
-                      </p>
-                      <div className="mt-2">
+                    <div className="border rounded-lg overflow-hidden">
+                      <div className="aspect-video bg-muted relative">
+                        <img
+                          src="/placeholder.svg?height=400&width=600"
+                          alt="Portfolio Template"
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-medium text-lg">Portfolio Website</h3>
+                        <p className="text-muted-foreground text-sm mt-1 mb-4">
+                          Professional portfolio template with smooth animations and project showcases.
+                        </p>
                         <Link href="/templates/portfolio">
                           <Button variant="outline" size="sm">
                             View Template
@@ -381,6 +536,139 @@ function HoverCard() {
                       <strong>Animations</strong> - Customize the animations to create a unique experience.
                     </li>
                   </ul>
+                </div>
+              </AnimatedCard>
+            </TabsContent>
+
+            <TabsContent value="api">
+              <AnimatedCard className="p-6">
+                <h2 className="text-2xl font-semibold mb-4">API Reference</h2>
+                <div className="space-y-6">
+                  <p>
+                    This section provides detailed API documentation for all components in Maksudi-Lib. For each
+                    component, you'll find a list of props, their types, default values, and descriptions.
+                  </p>
+
+                  <div className="space-y-8">
+                    <div>
+                      <h3 className="text-xl font-medium mb-4">AnimatedButton</h3>
+                      <div className="border rounded-md">
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b bg-muted/50">
+                          <div className="font-medium">Prop</div>
+                          <div className="font-medium">Type</div>
+                          <div className="font-medium">Default</div>
+                          <div className="font-medium">Description</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>variant</div>
+                          <div className="text-muted-foreground">string</div>
+                          <div className="text-muted-foreground">"default"</div>
+                          <div className="text-muted-foreground">
+                            Button variant: "default", "secondary", "outline", "ghost", "link"
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>size</div>
+                          <div className="text-muted-foreground">string</div>
+                          <div className="text-muted-foreground">"default"</div>
+                          <div className="text-muted-foreground">Button size: "default", "sm", "lg", "icon"</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>ripple</div>
+                          <div className="text-muted-foreground">boolean</div>
+                          <div className="text-muted-foreground">true</div>
+                          <div className="text-muted-foreground">Whether to show ripple effect on click</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4">
+                          <div>hoverScale</div>
+                          <div className="text-muted-foreground">number</div>
+                          <div className="text-muted-foreground">1.05</div>
+                          <div className="text-muted-foreground">Scale factor on hover</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-medium mb-4">AnimatedCard</h3>
+                      <div className="border rounded-md">
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b bg-muted/50">
+                          <div className="font-medium">Prop</div>
+                          <div className="font-medium">Type</div>
+                          <div className="font-medium">Default</div>
+                          <div className="font-medium">Description</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>tiltEffect</div>
+                          <div className="text-muted-foreground">boolean</div>
+                          <div className="text-muted-foreground">true</div>
+                          <div className="text-muted-foreground">Whether to enable 3D tilt effect on hover</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>hoverScale</div>
+                          <div className="text-muted-foreground">number</div>
+                          <div className="text-muted-foreground">1.02</div>
+                          <div className="text-muted-foreground">Scale factor on hover</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4">
+                          <div>glareEffect</div>
+                          <div className="text-muted-foreground">boolean</div>
+                          <div className="text-muted-foreground">true</div>
+                          <div className="text-muted-foreground">Whether to show glare effect on hover</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-medium mb-4">AnimatedDrawer</h3>
+                      <div className="border rounded-md">
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b bg-muted/50">
+                          <div className="font-medium">Prop</div>
+                          <div className="font-medium">Type</div>
+                          <div className="font-medium">Default</div>
+                          <div className="font-medium">Description</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>open</div>
+                          <div className="text-muted-foreground">boolean</div>
+                          <div className="text-muted-foreground">false</div>
+                          <div className="text-muted-foreground">Whether the drawer is open</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>onClose</div>
+                          <div className="text-muted-foreground">function</div>
+                          <div className="text-muted-foreground">-</div>
+                          <div className="text-muted-foreground">Callback when the drawer is closed</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>position</div>
+                          <div className="text-muted-foreground">string</div>
+                          <div className="text-muted-foreground">"right"</div>
+                          <div className="text-muted-foreground">"left", "right", "top", "bottom"</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4 border-b">
+                          <div>size</div>
+                          <div className="text-muted-foreground">string</div>
+                          <div className="text-muted-foreground">"300px"</div>
+                          <div className="text-muted-foreground">Width or height of the drawer</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4 p-4">
+                          <div>backdrop</div>
+                          <div className="text-muted-foreground">boolean</div>
+                          <div className="text-muted-foreground">true</div>
+                          <div className="text-muted-foreground">Whether to show a backdrop</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text-center mt-8">
+                      <p className="text-muted-foreground mb-4">
+                        For complete API documentation of all components, please visit the Storybook.
+                      </p>
+                      <Link href="/storybook">
+                        <Button>View Storybook</Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </AnimatedCard>
             </TabsContent>

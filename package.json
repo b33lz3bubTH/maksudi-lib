@@ -59,8 +59,17 @@
     "vaul": "^0.9.6",
     "zod": "^3.24.1",
     "@emotion/is-prop-valid": "latest",
+    "@tiptap/pm": "latest",
+    "@tiptap/core": "latest",
     "framer-motion": "latest",
-    "gsap": "latest"
+    "gsap": "latest",
+    "@tanstack/react-table": "latest",
+    "@tiptap/react": "latest",
+    "@tiptap/starter-kit": "latest",
+    "@tiptap/extension-underline": "latest",
+    "@tiptap/extension-link": "latest",
+    "@tiptap/extension-image": "latest",
+    "@tiptap/extension-text-align": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
