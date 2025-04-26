@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, Github, Package } from "lucide-react"
+import { ArrowRight, Github, Package, Twitter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { HeroAnimation } from "@/components/hero-animation"
@@ -197,20 +197,143 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            Built with ❤️ by Maksudi. The source code is available on{" "}
-            <a
-              href="https://github.com/b33lz3bubTH/maksudi-lib"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              GitHub
-            </a>
-            .
-          </p>
+      <footer className="border-t py-12 md:py-16 lg:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <Package className="h-6 w-6" />
+                <span className="font-bold text-xl">Maksudi-Lib</span>
+              </div>
+              <p className="text-muted-foreground mb-6 max-w-md">
+                A comprehensive UI component library with stunning animations powered by GSAP and Framer Motion. Build
+                beautiful interfaces with minimal effort.
+              </p>
+              <div className="flex space-x-4">
+                <a
+                  href="https://github.com/b33lz3bubTH"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Github className="h-5 w-5" />
+                  <span className="sr-only">GitHub</span>
+                </a>
+                <a
+                  href="https://x.com/Sourav0xFF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Twitter className="h-5 w-5" />
+                  <span className="sr-only">X (Twitter)</span>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Documentation</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/docs/getting-started"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Getting Started
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs/components"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Components
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs/animations"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Animations
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs/templates"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Templates
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/storybook" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Storybook
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/templates" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Templates
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about-us" className="text-muted-foreground hover:text-foreground transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms-of-service"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t mt-12 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-sm text-muted-foreground mb-4 md:mb-0">
+                &copy; {new Date().getFullYear()} Maksudi-Lib. All rights reserved.
+              </p>
+              <div className="flex space-x-6">
+                <Link
+                  href="/about-us"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/privacy-policy"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Privacy
+                </Link>
+                <Link
+                  href="/terms-of-service"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Terms
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
